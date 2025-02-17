@@ -1,0 +1,9 @@
+[build]
+  command = "npx gatsby build"
+  publish = "public"
+
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/blog/index.html"
+  status = 200

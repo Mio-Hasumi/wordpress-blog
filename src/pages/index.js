@@ -1,128 +1,133 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React, { useEffect } from "react";
+import { Link } from "gatsby";
+import "./Style.css";
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
+const IndexPage = () => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Google Analytics
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-50EN2ZCDYK");
 
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-  },
-  {
-    text: "Examples",
-    url: "https://github.com/gatsbyjs/gatsby/tree/master/examples",
-    description:
-      "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-  },
-]
+      // Load external script dynamically
+      const script = document.createElement("script");
+      script.src = "/scripts.js";
+      script.defer = true;
+      document.body.appendChild(script);
+    }
+  }, []);
 
-const samplePageLinks = [
-  {
-    text: "Page 2",
-    url: "page-2",
-    badge: false,
-    description:
-      "A simple example of linking to another page within a Gatsby site",
-  },
-  { text: "TypeScript", url: "using-typescript" },
-  { text: "Server Side Rendering", url: "using-ssr" },
-  { text: "Deferred Static Generation", url: "using-dsg" },
-]
+  return (
+    <div>
+      {/* Top Bar */}
+      <header className="top-bar">
+        <div className="brand">FitMunity</div>
+        <button className="cta-button" id="cta-top">
+          Join the Waitlist
+        </button>
+      </header>
 
-const moreLinks = [
-  { text: "Join us on Discord", url: "https://gatsby.dev/discord" },
-  {
-    text: "Documentation",
-    url: "https://gatsbyjs.com/docs/",
-  },
-  {
-    text: "Starters",
-    url: "https://gatsbyjs.com/starters/",
-  },
-  {
-    text: "Showcase",
-    url: "https://gatsbyjs.com/showcase/",
-  },
-  {
-    text: "Contributing",
-    url: "https://www.gatsbyjs.com/contributing/",
-  },
-  { text: "Issues", url: "https://github.com/gatsbyjs/gatsby/issues" },
-]
+      {/* Navbar */}
+      <div className="navbar" id="navbar">
+        <button data-target="review-section">Intro</button>
+        <button data-target="features-section">Features</button>
+        <button data-target="cta-section">Learn More</button>
+        <button data-target="qna-section">Q&A</button>
+      </div>
 
-const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="container">
+          <div className="content">
+            <h1>
+              Reach your fitness goals
+              <br />
+              with <span className="highlight">AI companions</span>
+            </h1>
+            <p>
+              Nutrition and workout advice from experts, support from friends,
+              all in one!
+            </p>
+            <button className="cta-button" id="cta-hero">
+              Join US!
+            </button>
+          </div>
+          <img src="/HeroSession.png" alt="Fitness App Preview" />
+        </div>
+      </section>
 
-const IndexPage = () => (
-  <Layout>
-    <div className={styles.textCenter}>
-      <StaticImage
-        src="../images/example.png"
-        loading="eager"
-        width={64}
-        quality={95}
-        formats={["auto", "webp", "avif"]}
-        alt=""
-        style={{ marginBottom: `var(--space-3)` }}
-      />
-      <h1>
-        Welcome to <b>Gatsby!</b>
-      </h1>
-      <p className={styles.intro}>
-        <b>Example pages:</b>{" "}
-        {samplePageLinks.map((link, i) => (
-          <React.Fragment key={link.url}>
-            <Link to={link.url}>{link.text}</Link>
-            {i !== samplePageLinks.length - 1 && <> · </>}
-          </React.Fragment>
-        ))}
-        <br />
-        Edit <code>src/pages/index.js</code> to update this page.
-      </p>
+      {/* Features Section */}
+      <section className="features-section">
+        <h2>Moving into a new neighborhood that cares about you</h2>
+        <div className="feature">
+          <img src="/Feature_PersonalFriends.png" alt="Feature 1" />
+          <div className="content">
+            <span>1</span>
+            <h3>Meet Your Personal Health Team and Friends</h3>
+            <p>
+              Nutritionists, work-out buddy, yoga coach, friend Emily… Build
+              your 24/7 support system in a click!
+            </p>
+          </div>
+        </div>
+        <div className="feature">
+          <img src="/Feature_TrackProcess.png" alt="Feature 2" />
+          <div className="content">
+            <span>2</span>
+            <h3>Track Your Progress</h3>
+            <p>Easily log meals, track workouts, and share your journey, just like Instagram.</p>
+          </div>
+        </div>
+        <div className="feature">
+          <img src="/Feature_TrackProcess.png" alt="Feature 3" />
+          <div className="content">
+            <span>3</span>
+            <h3>Receive Feedback and Love</h3>
+            <p>Tracking your calorie, giving you personalized advice, cheering you up when you are down…</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Call-to-Action Section */}
+      <section className="cta-section">
+        <div className="container">
+          <div className="text">
+            <h2>Start Your Journey and Sign Up for the Waitlist Today →</h2>
+            <p>Because YOU deserve it.</p>
+            <form
+              action="https://app.us17.list-manage.com/subscribe/post?u=22a9b305d222e24e838122b53&amp;id=715ea73430"
+              method="post"
+              target="_blank"
+            >
+              <div id="input-wrapper">
+                <input
+                  type="email"
+                  id="user-input"
+                  name="EMAIL"
+                  placeholder="Enter your email to join Us!"
+                  required
+                  className="required email"
+                />
+                <button id="join-btn" type="submit">
+                  Join the Waitlist →
+                </button>
+              </div>
+            </form>
+          </div>
+          <img src="/CTA.png" alt="Personalized Plan Preview" />
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer>
+        <p>&copy; 2025 FitMunity. All Rights Reserved.</p>
+      </footer>
     </div>
-    <ul className={styles.list}>
-      {links.map(link => (
-        <li key={link.url} className={styles.listItem}>
-          <a
-            className={styles.listItemLink}
-            href={`${link.url}${utmParameters}`}
-          >
-            {link.text} ↗
-          </a>
-          <p className={styles.listItemDescription}>{link.description}</p>
-        </li>
-      ))}
-    </ul>
-    {moreLinks.map((link, i) => (
-      <React.Fragment key={link.url}>
-        <a href={`${link.url}${utmParameters}`}>{link.text}</a>
-        {i !== moreLinks.length - 1 && <> · </>}
-      </React.Fragment>
-    ))}
-  </Layout>
-)
+  );
+};
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-export const Head = () => <Seo title="Home" />
-
-export default IndexPage
+export default IndexPage;

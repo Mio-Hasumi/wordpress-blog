@@ -1,18 +1,9 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
- */
-
-/**
- * @type {import('gatsby').GatsbyConfig}
- */
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `Your Blog Title`,
+    description: `Your Blog Description`,
+    author: `@yourhandle`,
+    siteUrl: `https://your-netlify-site.com/`,
   },
   plugins: [
     `gatsby-plugin-image`,
@@ -28,16 +19,21 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Your Gatsby Blog`,
+        short_name: `YourBlog`,
         start_url: `/`,
-        background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        background_color: `#ffffff`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: `WPGraphQL`,
+        fieldName: `wpgraphql`,
+        url: `http://146.190.157.121/graphql/`,
       },
     },
   ],
-}
+};
