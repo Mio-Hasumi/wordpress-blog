@@ -59,11 +59,11 @@ const IndexPage = () => {
       {/* Review Section */}
       <section id="review-section" className="review-section">
         <div className="stars">_________________</div>
-        <h2>We Build an AI Fitness Community for You</h2>
-        <p>
-          "Say goodbye to the pressure of social media and hello to a judgment-free zone. 
-          Let’s move to a community where everyone shares your dream."
-        </p>
+        <h2>We Build an AI Fitness Community only for You</h2>
+
+        <h2>"Say goodbye to the pressure of social media and hello to a judgment-free zone. 
+          Let's move to a community where everyone shares your dream."
+        </h2>
       </section>
 
       {/* Features Section */}
