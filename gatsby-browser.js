@@ -1,7 +1,15 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/
- */
+export const onClientEntry = () => {
+    console.log("✅ Gatsby Browser API Loaded!");
 
-// You can delete this file if you're not using it
+    setTimeout(() => {
+        console.log("✅ Injecting scripts.js...");
+
+        const script = document.createElement("script");
+        script.src = "/scripts.js";
+        script.defer = true;
+        script.onload = () => console.log("✅ scripts.js successfully loaded!");
+        script.onerror = () => console.error("❌ Failed to load scripts.js!");
+
+        document.body.appendChild(script);
+    }, 1000); // Delay ensures Gatsby fully loads before injecting script
+};
